@@ -4,9 +4,17 @@ import {
   createMuiTheme,
   ThemeProvider,
 } from "@material-ui/core/styles";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import orange from "@material-ui/core/colors/deepOrange";
+
 import NavBar from "./components/NavBar";
 import Landing from "./components/Landing";
-import orange from "@material-ui/core/colors/deepOrange";
+import Login from "./components/Login";
+import Registration from "./components/Registration";
 
 const theme = createMuiTheme({
   palette: {
@@ -16,14 +24,33 @@ const theme = createMuiTheme({
     danger: "orange",
   },
 });
+
 function App() {
   return (
-    <div className="App">
-      <ThemeProvider theme={theme}>
-        <NavBar />
-        <Landing />
-      </ThemeProvider>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="/register">
+            <ThemeProvider theme={theme}>
+              <NavBar />
+              <Registration />
+            </ThemeProvider>
+          </Route>
+          <Route path="/login">
+            <ThemeProvider theme={theme}>
+              <NavBar />
+            </ThemeProvider>
+            <Login />
+          </Route>
+          <Route path="/">
+            <ThemeProvider theme={theme}>
+              <NavBar />
+              <Landing />
+            </ThemeProvider>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

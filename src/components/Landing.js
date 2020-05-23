@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
 import LandingImg from "../img/undraw_Group_chat_unwm.svg";
 
@@ -39,6 +40,10 @@ const useStyles = makeStyles((theme) => ({
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
   },
+  link: {
+    textDecoration: "none",
+    color: "white"
+  }
 }));
 
 export default function Landing() {
@@ -64,7 +69,9 @@ export default function Landing() {
             variant="contained"
             className={classes.btn}
           >
-            Sign Up
+            <Link to="/register" className={classes.link}>
+              Register 
+            </Link>
           </Button>
           <Button
             color="primary"
@@ -72,7 +79,9 @@ export default function Landing() {
             variant="contained"
             className={classes.btn}
           >
-            Sign In
+            <Link to="/login" className={classes.link}>
+              Login
+            </Link>
           </Button>
         </div>
       </div>
