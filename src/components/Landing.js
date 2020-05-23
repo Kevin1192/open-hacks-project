@@ -63,26 +63,26 @@ export default function Landing() {
           future
         </Typography>
         <div>
-          <Button
-            color="primary"
-            size="small"
-            variant="contained"
-            className={classes.btn}
-          >
-            <Link to="/register" className={classes.link}>
+          <Link to="/register" className={classes.link}>
+            <Button
+              color="primary"
+              size="small"
+              variant="contained"
+              className={classes.btn}
+            >
               Register 
-            </Link>
-          </Button>
-          <Button
-            color="primary"
-            size="small"
-            variant="contained"
-            className={classes.btn}
-          >
-            <Link to="/login" className={classes.link}>
+            </Button>
+          </Link>
+          <Link to="/login" className={classes.link}>
+            <Button
+              color="primary"
+              size="small"
+              variant="contained"
+              className={classes.btn}
+            >
               Login
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </div>
       </div>
       <img src={LandingImg} alt="Landing" className={classes.img} />
