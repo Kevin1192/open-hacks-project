@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-
+import NavBar from './NavBar';
 import LandingImg from "../img/undraw_Group_chat_unwm.svg";
 
 const useStyles = makeStyles((theme) => ({
@@ -46,6 +46,7 @@ export default function Landing() {
 
   return (
     <div className={classes.root}>
+    <NavBar />
       <div className={classes.left}>
         <Typography className={classes.text1} variant="h5">
           Helping students connect with professionals working in the tech
