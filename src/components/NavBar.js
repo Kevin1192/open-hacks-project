@@ -4,6 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,7 +17,12 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   toolbar: {
-      justifyContent: 'space-between'
+    justifyContent: "space-between"
+  },
+  logoLink: {
+    textDecoration: "none",
+    color: "black",
+    fontWeight: "bold"
   }
 }));
 
@@ -27,10 +33,11 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar className={classes.toolbar}> 
-            <Typography variant="h6">
+          <Typography variant="h6">
+            <Link className={classes.logoLink} to="/">
               Torch
-            </Typography>
-          <Button color="inherit">Login</Button>
+            </Link>
+          </Typography>
         </Toolbar>
       </AppBar>
     </div>
