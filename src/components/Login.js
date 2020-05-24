@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { signin, signInWithGoogle, signInWithGitHub } from "../helpers/auth";
+import { signin } from "../helpers/auth";
 
 export default class Login extends Component {
   constructor(props) {
@@ -36,7 +36,7 @@ export default class Login extends Component {
         <form autoComplete="off" onSubmit={this.handleSubmit}>
           <h1>
             Login to
-            <Link to="/">Chatty</Link>
+            <Link to="/">Chat Room</Link>
           </h1>
           <p>Fill in the form below to login to your account.</p>
           <div>
