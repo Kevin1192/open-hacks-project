@@ -15,6 +15,7 @@ import NavBar from "./components/NavBar";
 import Landing from "./components/Landing";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
+import Blog from "./components/Blog";
 
 const theme = createMuiTheme({
   palette: {
@@ -30,6 +31,12 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
+          <Route path="/blog">
+            <ThemeProvider theme={theme}>
+              <NavBar />
+              <Blog />
+            </ThemeProvider>
+          </Route>
           <Route path="/register">
             <ThemeProvider theme={theme}>
               <NavBar />
