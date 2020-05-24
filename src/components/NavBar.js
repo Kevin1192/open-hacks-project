@@ -18,6 +18,13 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar: {
       justifyContent: 'space-between'
+  },
+  navLink: {
+      color: 'white',
+      textTransform: 'capitalize',
+  },
+  btn: {
+      color: 'white !important' ,
   }
 }));
 
@@ -29,11 +36,14 @@ export default function ButtonAppBar(props) {
       <AppBar position="static">
         <Toolbar className={classes.toolbar}> 
             <Typography variant="h6">
-              Torch
+              <Link href='/' style={{color: 'white', textDecoration: 'none'}}>Torch</Link>
             </Typography>
             <div>
-            <Link color='inherit' href='/chat'><Button>Chat</Button></Link>
-            {props.auth === true ? <Button color="inherit" onClick={props.handleLogout}>Log out</Button> : <Button color="inherit">Login</Button>}
+            <Link href='/chat'><Button className={classes.btn}>Chat</Button></Link>
+            {props.auth === true ? <Button color="inherit" onClick={props.handleLogout}>Logout</Button> : [
+                <Link href='/login' ><Button className={classes.btn} color="inherit">Login</Button></Link>,
+                <Link href='/signup' ><Button className={classes.btn} color="inherit">Signup</Button></Link>]
+                }
             </div>
         </Toolbar>
       </AppBar>
