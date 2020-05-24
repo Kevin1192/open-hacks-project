@@ -11,10 +11,10 @@ import orange from "@material-ui/core/colors/deepOrange";
 import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
 import Chat from './components/Chat';
-import Signup from './components/Signup';
-import Login from './components/Login';
+import Signup from './components/Signup1';
+import Login from './components/Login1';
 
-import { auth } from './services/firebase';
+import { auth } from './services/firebaseConnection';
 const theme = createMuiTheme({
   palette: {
     primary: orange,
@@ -30,8 +30,14 @@ class App extends React.Component {
       authenticated: false,
       loading : false,
     }
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
+  handleLogout() {
+    this.setState({authenticated: false})
+    auth().signOut();
+  }
+  
   componentDidMount() {
     auth().onAuthStateChanged((user) => {
       if (user) {
@@ -51,7 +57,7 @@ class App extends React.Component {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <NavBar />
+        <NavBar auth={this.state.authenticated} handleLogout={this.handleLogout}/>
         {this.state.loading === true ? <h2>Loading...</h2> : (
         <Router>
           <Switch>

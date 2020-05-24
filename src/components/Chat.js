@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { auth } from "../services/firebase";
-import { db } from "../services/firebase";
+import { auth } from "../services/firebaseConnection";
+import { db } from "../services/firebaseConnection";
 
 export default class Chat extends Component {
   constructor(props) {
@@ -52,11 +52,13 @@ export default class Chat extends Component {
   }
 
   render() {
+      const username = this.state.user.email.split('@')[0];
     return (
       <div>
         <div className="chats">
           {this.state.chats.map((chat) => {
-            return <p key={chat.timestamp}>{chat.content}</p>;
+              const time = new Date(chat.timestamp).toLocaleString().split(' ').filter((val, i) => [1,2].includes(i) ).join(' ')
+            return <p key={chat.timestamp}>{time} {username}: {chat.content}</p>;
           })}
         </div>
         <form onSubmit={this.handleSubmit}>
