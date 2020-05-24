@@ -46,7 +46,6 @@ export default function Landing() {
 
   return (
     <div className={classes.root}>
-    <NavBar />
       <div className={classes.left}>
         <Typography className={classes.text1} variant="h5">
           Helping students connect with professionals working in the tech

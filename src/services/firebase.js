@@ -1,9 +1,9 @@
 import firebase from 'firebase';
 
 const config = {
-  apiKey: "AIzaSyCNEJzWaM8XMuwhGBiEeyUMwaKkyo-cYmk",
-  authDomain: "chat-e13c3.firebaseapp.com",
-  databaseURL: "https://chat-e13c3.firebaseio.com",
+  apiKey: "AIzaSyDdpK5T4fX7rkJC7zNK8QqbqCbC-wMLUzA",
+  authDomain: "torch-967c4.firebaseapp.com",
+  databaseURL: "https://torch-967c4.firebaseio.com",
 };
 
 firebase.initializeApp(config);
