@@ -1,8 +1,50 @@
 import React, { Component } from "react";
+import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles'
 import { auth } from "../services/firebaseConnection";
 import { db } from "../services/firebaseConnection";
+import Torch from '../img/torch.svg'
 
-export default class Chat extends Component {
+
+const styles = {
+  chat: {
+    margin: "0 auto",
+  },
+  paper: {
+    width: "60%",
+    margin: "50px auto",
+    height: "50%",
+    borderRadius: "20px",
+  },
+  card: {
+    width: "80%",
+    margin: "10px auto",
+    padding: "20px 0",
+    borderRadius: "0 30px",
+    display: "flex",
+    backgroundColor: "rgba(78, 183, 253,0.4)",
+  },
+  time: {
+    margin: "0 30px",
+    color: '#aaa'
+  },
+  user: {
+    fontWeight: "700",
+    margin: "0 10px",
+    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  },
+  text: {
+      width: '50%',
+  }
+};
+
+
+class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +70,8 @@ export default class Chat extends Component {
           await db.ref('chats').push({
               content: this.state.content,
               timestamp: Date.now(),
-              uid: this.state.user.uid
+              uid: this.state.user.uid,
+              user: this.state.user.email.split('@')[0]
           });
           this.setState({ content: '' })
       } catch (error) {
@@ -52,27 +95,40 @@ export default class Chat extends Component {
   }
 
   render() {
-      const username = this.state.user.email.split('@')[0];
+      const {classes} = this.props;
     return (
       <div>
-        <div className="chats">
+        <div className={classes.chat}>
+        <Paper variant='outlined' className={classes.paper}>
           {this.state.chats.map((chat) => {
               const time = new Date(chat.timestamp).toLocaleString().split(' ').filter((val, i) => [1,2].includes(i) ).join(' ')
-            return <p key={chat.timestamp}>{time} {username}: {chat.content}</p>;
+            return <Card variant='outlined' className={classes.card} key={chat.timestamp}>
+            <div className={classes.time}>{time}</div>
+             <div className={classes.user}>{chat.user}: </div> <div>{chat.content}</div>
+            </Card>;
           })}
-        </div>
+          </Paper>
         <form onSubmit={this.handleSubmit}>
-          <input
+        <div>
+          <TextField
             onChange={this.handleChange}
+            variant='outlined'
             value={this.state.content}
-          ></input>
+            placeholder='light and inspire'
+            className={classes.text}
+          ></TextField>
           {this.state.error ? <p>{this.state.writeError}</p> : null}
-          <button type="submit">Send</button>
+          <Button variant='outlined' color='primary' type="submit"><img src={Torch} style={{height: '45px', width: '70px'}} alt='torch icon'/></Button>
+          </div>
         </form>
         <div>
-          Login in as: <strong>{this.state.user.email}</strong>
+          Logined in as: <strong>{this.state.user.email}</strong>
+        </div>
         </div>
       </div>
     );
   }
 }
+
+
+export default withStyles(styles)(Chat);
