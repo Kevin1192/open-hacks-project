@@ -39,7 +39,9 @@ export default function ButtonAppBar(props) {
               <Link href='/' style={{color: 'white', textDecoration: 'none'}}>Torch</Link>
             </Typography>
             <div>
+            <Link href='/blog'><Button className={classes.btn}>Blog</Button></Link>
             <Link href='/chat'><Button className={classes.btn}>Chat</Button></Link>
+            <Link href='/'><Button className={classes.btn}>Facebook</Button></Link>
             {props.auth === true ? <Button color="inherit" onClick={props.handleLogout}>Logout</Button> : [
                 <Link href='/login' ><Button className={classes.btn} color="inherit">Login</Button></Link>,
                 <Link href='/signup' ><Button className={classes.btn} color="inherit">Signup</Button></Link>]

@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import LandingImg from "../img/undraw_Group_chat_unwm.svg";
-
+import Link from '@material-ui/core/Link'
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -57,15 +57,15 @@ export default function Landing() {
           future
         </Typography>
         <div>
-          <Button
+          <Link href='/signup'><Button
             color="primary"
             size="small"
             variant="contained"
             className={classes.btn}
           >
             Sign Up
-          </Button>
-          <Button
+          </Button></Link>
+          <Link href='/login'><Button
             color="primary"
             size="small"
             variant="contained"
@@ -73,6 +73,7 @@ export default function Landing() {
           >
             Sign In
           </Button>
+          </Link>
         </div>
       </div>
       <img src={LandingImg} alt="Landing" className={classes.img} />
