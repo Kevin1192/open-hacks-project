@@ -17,7 +17,7 @@ My contributions are
 
 1. the Landing page UI and
 
-2. the Chat Room functionality.
+2. the Chat Room.
 
 
 For the landing page UI, I used reusable components from [Material-UI](https://material-ui.com/) library to create the skeleton.
