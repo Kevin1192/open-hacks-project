@@ -3,7 +3,7 @@ This project is created for the [Open Hacks hackathon](https://hack.theopencode.
 
 ## Torch
 
-We application name is Torch. Torch is a web application that engages people insterested in programming in online communities and help them foster connections.
+Our application name is Torch. Torch is a web application that engages people insterested in programming in online communities and help them foster connections.
 
 
 ![](src/img/landingPage.png)
